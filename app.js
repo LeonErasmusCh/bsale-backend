@@ -3,8 +3,8 @@ const cors = require('cors');
 const express = require("express");
 
 const port = 3000;
-app.use(cors());
 const app = express();
+app.use(cors());
 
 // create connection
 

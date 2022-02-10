@@ -1,23 +1,30 @@
 const mysql = require("mysql");
 const cors = require('cors');
-const env = require('dotenv').config()
 const express = require("express");
 const res = require("express/lib/response");
-const port = process.env.PORT || 3000 
+const dotenv = require('dotenv');
+
+// dotenv config
+dotenv.config({ path: './.env' });
 
 const app = express();
+const port = process.env.PORT || 3000 
 app.use(cors());
+
 
 // create connection
 
 const db = mysql.createConnection({
- host: process.env.HOST,
- user: process.env.USER,
- password: process.env.PASSWORD,
- database: process.env.DATABASE,
+ host: process.env.DB_HOST,
+ user: process.env.DB_USER,
+ password: process.env.DB_PASSWORD,
+ database: process.env.DB_DATABASE, 
+/*  host: "mdb-test.c6vunyturrl6.us-west-1.rds.amazonaws.com",
+    user: "bsale_test",
+    password: "bsale_test",
+    database: 'bsale_test' */
 });
 
-console.log("APP", db)
 
 db.connect((err) => {
   if (err) {

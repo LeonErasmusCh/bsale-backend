@@ -3,8 +3,8 @@ const cors = require('cors');
 const env = require('dotenv').config()
 const express = require("express");
 const res = require("express/lib/response");
-
 const port = process.env.PORT || 3000 
+
 const app = express();
 app.use(cors());
 
@@ -72,3 +72,4 @@ app.listen(port, () => {
 });
 
 //  node app.js
+// https://leonbsaleapi.herokuapp.com/ | https://git.heroku.com/leonbsaleapi.git

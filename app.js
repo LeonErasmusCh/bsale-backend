@@ -1,23 +1,27 @@
 const mysql = require("mysql");
 const cors = require('cors');
+const env = require('dotenv').config()
 const express = require("express");
+const res = require("express/lib/response");
 
-const port = 3000;
+const port = process.env.PORT || 3000 
 const app = express();
 app.use(cors());
 
 // create connection
 
 const db = mysql.createConnection({
-  host: "mdb-test.c6vunyturrl6.us-west-1.rds.amazonaws.com",
-  user: "bsale_test",
-  password: "bsale_test",
-  database: "bsale_test",
+ host: process.env.HOST,
+ user: process.env.USER,
+ password: process.env.PASSWORD,
+ database: process.env.DATABASE,
 });
+
+console.log("APP", db)
 
 db.connect((err) => {
   if (err) {
-    throw err;
+    res.status(500).send("error")
   }
   console.log("Mysql connected");
 });
@@ -26,9 +30,11 @@ db.connect((err) => {
 app.get("/", (req, res) => {
   let sql = "SELECT * FROM product";
   let query = db.query(sql, (err, results) => {
-    if (err) throw err;
+    if (err){
+      res.status(500).send("error")
+    };
     console.log(results);
-    res.send(results);
+    res.status(200).send(results);
   });
 });
 
@@ -36,9 +42,11 @@ app.get("/", (req, res) => {
 app.get("/product/:id", (req, res) => {
   let sql = `SELECT * FROM product WHERE id=${req.params.id}`;
   let query = db.query(sql, (err, results) => {
-    if (err) throw err;
+    if (err){
+      res.status(500).send("error")
+    };
     console.log(results);
-    res.send(results);
+    res.status(200).send(results);
   });
 });
 
@@ -52,7 +60,7 @@ app.get("/products", (req, res, next) => {
   let query = db.query(sql, (err, results) => {
     if (err) throw err;
     console.log(results);
-    res.send(results);
+    res.status(200).send(results);
   });
  
 });

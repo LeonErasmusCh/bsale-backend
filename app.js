@@ -76,4 +76,4 @@ app.listen(port, () => {
 });
 
 //  node app.js
-// https://leonbsaleapi.herokuapp.com/ | https://git.heroku.com/leonbsaleapi.git
+// https://leonbsaleapi.herokuapp.com/ 

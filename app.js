@@ -65,7 +65,9 @@ app.get("/products", (req, res, next) => {
   let sql =
     "SELECT * FROM product WHERE category=" + JSON.parse(search.category);
   let query = db.query(sql, (err, results) => {
-    if (err) throw err;
+    if (err){
+    res.status(500).send("error")
+    };
     console.log(results);
     res.status(200).send(results);
   });
@@ -75,5 +77,5 @@ app.listen(port, () => {
   console.log(`server started on port ${port}`);
 });
 
-//  node app.js
+//  run: node app.js
 // https://leonbsaleapi.herokuapp.com/ 

@@ -76,7 +76,7 @@ app.listen(port, () => {
   console.log(`server started on port ${port}`);
 });
 
-
+/* 
 //search by product name
 // query string search by category http://localhost:3000/products?name=vodka
 app.get("/products", (req, res) => {
@@ -96,7 +96,7 @@ app.get("/products", (req, res) => {
 app.listen(port, () => {
   console.log(`server started on port ${port}`);
 });
-
+ */
 
 
 //  run: node app.js

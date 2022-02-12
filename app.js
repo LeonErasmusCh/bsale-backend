@@ -76,14 +76,14 @@ app.listen(port, () => {
   console.log(`server started on port ${port}`);
 });
 
-/* 
+
 //search by product name
 // query string search by category http://localhost:3000/products?name=vodka
 app.get("/products", (req, res) => {
   const search = req.query;
   console.log("req.query ", search.name);
   let sql =
-    "SELECT * FROM product WHERE name=" + JSON.parse(search.name);
+    "SELECT * FROM product WHERE name=Maní salado";
   let query = db.query(sql, (err, results) => {
     if (err){
     res.status(500).send("error")
@@ -93,10 +93,12 @@ app.get("/products", (req, res) => {
   });
 });
 
+
+
 app.listen(port, () => {
   console.log(`server started on port ${port}`);
 });
- */
+ 
 
 
 //  run: node app.js

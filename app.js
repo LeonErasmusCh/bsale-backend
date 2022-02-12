@@ -61,8 +61,7 @@ app.get("/product/:id", (req, res) => {
 app.get("/products", (req, res, next) => {
   const search = req.query;
   console.log("req.query ", search.category);
-  let sql =
-    "SELECT * FROM product WHERE category=" + JSON.parse(search.category);
+  let sql = "SELECT * FROM product WHERE category=" + JSON.parse(search.category);
   let query = db.query(sql, (err, results) => {
     if (err){
     res.status(500).send("error")
@@ -74,14 +73,14 @@ app.get("/products", (req, res, next) => {
 
 
 
-// filter by name
-// query string search by category http://localhost:3000/products?name=ABSOLUT
-app.get("/products", (req, res, next) => {
-  const search = req.query;
-  console.log("req.query ", search.name);
-  let sql =
-    "SELECT * FROM product WHERE name=" + JSON.parse(search.name);
+// search by name
+// query string search by category http://localhost:3000/product?name=Mani+Sin+Sal
+app.get("/product/", (req, res, next) => {
+  const productName = req.query;
+  console.log("req.query ", productName);
+  let sql ="SELECT * FROM product WHERE name=" + JSON.stringify(productName.name);
   let query = db.query(sql, (err, results) => {
+    console.log("results", results)
     if (err){
     res.status(500).send("error")
     };

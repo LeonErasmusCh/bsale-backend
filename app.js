@@ -72,6 +72,27 @@ app.get("/products", (req, res, next) => {
   });
 });
 
+
+
+// filter by name
+// query string search by category http://localhost:3000/products?name=ABSOLUT
+app.get("/products", (req, res, next) => {
+  const search = req.query;
+  console.log("req.query ", search.name);
+  let sql =
+    "SELECT * FROM product WHERE name=" + JSON.parse(search.name);
+  let query = db.query(sql, (err, results) => {
+    if (err){
+    res.status(500).send("error")
+    };
+    console.log(results);
+    res.status(200).send(results);
+  });
+});
+
+
+
+
 app.listen(port, () => {
   console.log(`server started on port ${port}`);
 });

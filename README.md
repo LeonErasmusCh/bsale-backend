@@ -5,8 +5,8 @@
 
 Prueba tecnica para Bsale
 Front end Vanilla js / Backend integracion Mysql con Rest Api
-## API Reference
 
+## API Reference
 #### Get all items
 
 ```http
@@ -23,13 +23,13 @@ Front end Vanilla js / Backend integracion Mysql con Rest Api
 ```http
   GET http://localhost:3000/products?category=1
 ```
-## Deployment
 
-To deploy this project run
+#### search by name (category 1 to 7)
 
-```bash
-  node app.js
+```http
+  GET http://localhost:3000/product?name=Mani+Sin+Sal
 ```
+
 
 
 ## Tech Stack

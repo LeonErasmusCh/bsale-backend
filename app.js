@@ -57,7 +57,6 @@ app.get("/product/:id", (req, res) => {
 });
 
 // filter by category
-
 // query string search by category http://localhost:3000/products?category=1
 app.get("/products", (req, res, next) => {
   const search = req.query;
@@ -76,6 +75,29 @@ app.get("/products", (req, res, next) => {
 app.listen(port, () => {
   console.log(`server started on port ${port}`);
 });
+
+
+//search by product name
+// query string search by category http://localhost:3000/products?name=vodka
+app.get("/products", (req, res) => {
+  const search = req.query;
+  console.log("req.query ", search.name);
+  let sql =
+    "SELECT * FROM product WHERE name=" + JSON.parse(search.name);
+  let query = db.query(sql, (err, results) => {
+    if (err){
+    res.status(500).send("error")
+    };
+    console.log(results);
+    res.status(200).send(results);
+  });
+});
+
+app.listen(port, () => {
+  console.log(`server started on port ${port}`);
+});
+
+
 
 //  run: node app.js
 // https://leonbsaleapi.herokuapp.com/ 

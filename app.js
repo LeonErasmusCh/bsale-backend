@@ -98,5 +98,15 @@ app.listen(port, () => {
 
 
 
-//  run: node app.js
-// https://leonbsaleapi.herokuapp.com/ 
+// **** run local server (port:3000): node app.js ****
+
+// local development server enpoint example
+// http://localhost:3000/products?category=1
+
+
+// **** deployed api endpoint examples **** 
+
+// get all products: https://leonbsaleapi.herokuapp.com/ 
+// get products by category: https://leonbsaleapi.herokuapp.com/products?category=1
+// get product by name: http://localhost:3000/product?name=Mani+Sin+Sal
+// get product by id: https://leonbsaleapi.herokuapp.com/5

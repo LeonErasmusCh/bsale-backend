@@ -78,11 +78,5 @@ app.listen(port, () => {
 
 
 
-app.listen(port, () => {
-  console.log(`server started on port ${port}`);
-});
- 
-
-
 //  run: node app.js
 // https://leonbsaleapi.herokuapp.com/ 
